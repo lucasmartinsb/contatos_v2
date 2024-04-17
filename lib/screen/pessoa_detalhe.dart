@@ -108,13 +108,20 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
         BancoHelper.idade: _controllerIdade.text
       };
 
-      if (editar == true) {
+      if (editar) {
         widget.informacaoPessoa.nome = _controllerNome.text;
         widget.informacaoPessoa.idade = int.parse(_controllerIdade.text);
         bdHelper.editarPessoa(widget.informacaoPessoa);
+        Navigator.pop(context);
         return widget.informacaoPessoa.cdpes!;
       } else {
         final id = await bdHelper.inserir(BancoHelper.tabelaPessoas, row);
+        widget.informacaoPessoa.nome = _controllerNome.text;
+        widget.informacaoPessoa.idade = int.parse(_controllerIdade.text);
+        widget.informacaoPessoa.cdpes = id;
+        setState(() {
+          editar = !editar;
+        });
         return id;
       }
     }
@@ -213,7 +220,6 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             ? const Color.fromARGB(255, 10, 132, 255)
                             : Colors.black54,
                         onTap: () async {
-                          widget.informacaoPessoa.cdpes = await salvarContato();
                           editar = true;
                           Telefone valueTelefone = Telefone(
                             cdfone: null,
@@ -269,8 +275,6 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                               '${_dadosEmails[index].email}',
                             ),
                             onTap: () async {
-                              widget.informacaoPessoa.cdpes =
-                                  await salvarContato();
                               editar = true;
                               Pessoa valuePessoa = Pessoa(
                                   cdpes: widget.informacaoPessoa.cdpes,
@@ -289,10 +293,9 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             ? const Color.fromARGB(255, 10, 132, 255)
                             : Colors.black54,
                         onTap: () async {
-                          int id = await salvarContato();
                           Email valueEmail = Email(
                             email: null,
-                            cdpes: id,
+                            cdpes: widget.informacaoPessoa.cdpes,
                           );
 
                           Pessoa valuePessoa = Pessoa(
@@ -311,8 +314,8 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                       child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              salvarContato();
-                              Navigator.pop(context);
+                              await salvarContato();
+                              editar = true;
                             }
                           },
                           style: ElevatedButton.styleFrom(
