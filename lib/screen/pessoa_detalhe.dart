@@ -131,12 +131,12 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
           child: Form(
               key: _formKey,
               child: Container(
-                color: Color.fromARGB(1, 253, 252, 252),
+                color: const Color.fromARGB(1, 253, 252, 252),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     Container(
                       padding: const EdgeInsets.all(20),
                       child: TextFormField(
@@ -181,7 +181,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                         children: [
                           Icon(
                             Icons.phone,
-                            color: const Color.fromARGB(255, 10, 132, 255),
+                            color: Color.fromARGB(255, 10, 132, 255),
                           ),
                           SizedBox(width: 10),
                           Text(
@@ -189,7 +189,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: const Color.fromARGB(255, 10, 132, 255)),
+                                color: Color.fromARGB(255, 10, 132, 255)),
                           ),
                         ],
                       ),
@@ -244,27 +244,24 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                       alignment: Alignment.centerLeft,
                       //padding: const EdgeInsets.all(20),
                       child: Container(
-                          child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: const EdgeInsets.only(left: 10),
-                              child: const Row(
-                                children: [
-                                  Icon(
-                                    Icons.email,
-                                    color:
-                                        const Color.fromARGB(255, 10, 132, 255),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    'E-mails',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: const Color.fromARGB(
-                                            255, 10, 132, 255)),
-                                  ),
-                                ],
-                              ))),
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.only(left: 10),
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.email,
+                                color: Color.fromARGB(255, 10, 132, 255),
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'E-mails',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 10, 132, 255)),
+                              ),
+                            ],
+                          )),
                     ),
                     ListView.builder(
                       shrinkWrap: true,
@@ -288,7 +285,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                     IgnorePointer(
                       ignoring: !editar, // Ignora toques se editar for falso
                       child: ListTile(
-                        title: Text("Adicionar e-mail"),
+                        title: const Text("Adicionar e-mail"),
                         textColor: editar
                             ? const Color.fromARGB(255, 10, 132, 255)
                             : Colors.black54,
@@ -308,7 +305,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                         },
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       padding: const EdgeInsets.all(20),
                       child: ElevatedButton(
@@ -319,7 +316,8 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 10, 132, 255),
+                            backgroundColor:
+                                const Color.fromARGB(255, 10, 132, 255),
                           ),
                           child: const Text(
                             'Salvar',
@@ -341,7 +339,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromARGB(1, 233, 232, 235),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Deletar',
                             style: TextStyle(
                               color: Color.fromARGB(255, 255, 70, 70),

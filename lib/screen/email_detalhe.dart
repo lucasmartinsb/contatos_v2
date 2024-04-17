@@ -42,7 +42,7 @@ class _EmailDetalheState extends State<EmailDetalhe> {
     _controllerCdpes.text = widget.informacaoPessoa.cdpes.toString();
 
     return AlertDialog(
-      title: Text("Adicionar Email"),
+      title: const Text("Adicionar Email"),
       content: Form(
         key: _formKey,
         child: Column(
@@ -50,7 +50,7 @@ class _EmailDetalheState extends State<EmailDetalhe> {
           children: [
             TextFormField(
               controller: _controllerEmail,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
@@ -92,9 +92,9 @@ class _EmailDetalheState extends State<EmailDetalhe> {
             }
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 10, 132, 255),
+            backgroundColor: const Color.fromARGB(255, 10, 132, 255),
           ),
-          child: Text(
+          child: const Text(
             'Salvar',
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
@@ -112,7 +112,7 @@ class _EmailDetalheState extends State<EmailDetalhe> {
             }
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(1, 233, 232, 235),
+            backgroundColor: const Color.fromARGB(1, 233, 232, 235),
           ),
           child: const Icon(
             Icons.delete,

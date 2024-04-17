@@ -41,17 +41,17 @@ class _TelefoneDetalheState extends State<TelefoneDetalhe> {
     }
 
     return AlertDialog(
-      title: Text("Adicionar telefone"),
+      title: const Text("Adicionar telefone"),
       content: Form(
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Container(
-                  width: 55,
+                  width: 60,
                   margin: const EdgeInsets.only(right: 20),
                   child: TextFormField(
                     controller: _controllerDdd,
@@ -60,7 +60,7 @@ class _TelefoneDetalheState extends State<TelefoneDetalhe> {
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'DDD',
                       border: OutlineInputBorder(),
                     ),
@@ -81,7 +81,7 @@ class _TelefoneDetalheState extends State<TelefoneDetalhe> {
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Telefone',
                       border: OutlineInputBorder(),
                     ),
@@ -125,7 +125,7 @@ class _TelefoneDetalheState extends State<TelefoneDetalhe> {
             }
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 10, 132, 255),
+            backgroundColor: const Color.fromARGB(255, 10, 132, 255),
           ),
           child: const Text(
             'Salvar',
