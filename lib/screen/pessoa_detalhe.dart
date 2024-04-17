@@ -30,6 +30,8 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
   @override
   void dispose() {
     _controllerNome.dispose();
+    _controllerID.dispose();
+    _controllerIdade.dispose();
     super.dispose();
   }
 

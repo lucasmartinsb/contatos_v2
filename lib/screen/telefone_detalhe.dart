@@ -22,6 +22,7 @@ class TelefoneDetalhe extends StatefulWidget {
 class _TelefoneDetalheState extends State<TelefoneDetalhe> {
   final TextEditingController _controllerFone = TextEditingController();
   final TextEditingController _controllerDdd = TextEditingController();
+  final TextEditingController _controllerCdpes = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   var editar;
 
@@ -29,6 +30,7 @@ class _TelefoneDetalheState extends State<TelefoneDetalhe> {
   void dispose() {
     _controllerFone.dispose();
     _controllerDdd.dispose();
+    _controllerCdpes.dispose();
     super.dispose();
   }
 
