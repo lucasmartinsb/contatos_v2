@@ -147,7 +147,7 @@ class _MainAppState extends State<MainApp> {
               builder: (BuildContext context) {
                 return FloatingActionButton(
                   heroTag: "addPessoa",
-                  backgroundColor: Color.fromARGB(255, 10, 132, 255),
+                  backgroundColor: const Color.fromARGB(255, 10, 132, 255),
                   child: const Icon(
                     Icons.person_add,
                     color: Color.fromARGB(255, 255, 255, 255),

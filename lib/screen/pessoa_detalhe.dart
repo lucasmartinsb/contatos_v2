@@ -88,6 +88,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
   @override
   void initState() {
     super.initState();
+    editar = false;
     if (widget.informacaoPessoa.cdpes != null) {
       editar = true;
       _controllerID.text = widget.informacaoPessoa.cdpes.toString();
@@ -169,7 +170,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 10),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons.phone,
@@ -204,30 +205,35 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             });
                       },
                     ),
-                    ListTile(
-                      title: Text("Adicionar telefone"),
-                      textColor: const Color.fromARGB(255, 10, 132, 255),
-                      onTap: () async {
-                        widget.informacaoPessoa.cdpes = await salvarContato();
-                        editar = true;
-                        Telefone valueTelefone = Telefone(
-                          cdfone: null,
-                          fone: null,
-                          ddd: null,
-                          cdpes: widget.informacaoPessoa.cdpes,
-                        );
+                    IgnorePointer(
+                      ignoring: !editar, // Ignora toques se editar for falso
+                      child: ListTile(
+                        title: const Text("Adicionar telefone"),
+                        textColor: editar
+                            ? const Color.fromARGB(255, 10, 132, 255)
+                            : Colors.black54,
+                        onTap: () async {
+                          widget.informacaoPessoa.cdpes = await salvarContato();
+                          editar = true;
+                          Telefone valueTelefone = Telefone(
+                            cdfone: null,
+                            fone: null,
+                            ddd: null,
+                            cdpes: widget.informacaoPessoa.cdpes,
+                          );
 
-                        Pessoa valuePessoa = Pessoa(
-                          cdpes: widget.informacaoPessoa.cdpes,
-                          nome: widget.informacaoPessoa.nome,
-                          idade: widget.informacaoPessoa.idade,
-                        );
+                          Pessoa valuePessoa = Pessoa(
+                            cdpes: widget.informacaoPessoa.cdpes,
+                            nome: widget.informacaoPessoa.nome,
+                            idade: widget.informacaoPessoa.idade,
+                          );
 
-                        _mostrarPopupTelefone(
-                            context, valueTelefone, valuePessoa);
-                      },
+                          _mostrarPopupTelefone(
+                              context, valueTelefone, valuePessoa);
+                        },
+                      ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       alignment: Alignment.centerLeft,
                       //padding: const EdgeInsets.all(20),
@@ -235,7 +241,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                           child: Container(
                               alignment: Alignment.centerLeft,
                               padding: const EdgeInsets.only(left: 10),
-                              child: Row(
+                              child: const Row(
                                 children: [
                                   Icon(
                                     Icons.email,
@@ -275,24 +281,29 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             });
                       },
                     ),
-                    ListTile(
-                      title: Text("Adicionar e-mail"),
-                      textColor: const Color.fromARGB(255, 10, 132, 255),
-                      onTap: () async {
-                        int id = await salvarContato();
-                        Email valueEmail = Email(
-                          email: null,
-                          cdpes: id,
-                        );
+                    IgnorePointer(
+                      ignoring: !editar, // Ignora toques se editar for falso
+                      child: ListTile(
+                        title: Text("Adicionar e-mail"),
+                        textColor: editar
+                            ? const Color.fromARGB(255, 10, 132, 255)
+                            : Colors.black54,
+                        onTap: () async {
+                          int id = await salvarContato();
+                          Email valueEmail = Email(
+                            email: null,
+                            cdpes: id,
+                          );
 
-                        Pessoa valuePessoa = Pessoa(
-                          cdpes: widget.informacaoPessoa.cdpes,
-                          nome: widget.informacaoPessoa.nome,
-                          idade: widget.informacaoPessoa.idade,
-                        );
+                          Pessoa valuePessoa = Pessoa(
+                            cdpes: widget.informacaoPessoa.cdpes,
+                            nome: widget.informacaoPessoa.nome,
+                            idade: widget.informacaoPessoa.idade,
+                          );
 
-                        _mostrarPopupEmail(context, valueEmail, valuePessoa);
-                      },
+                          _mostrarPopupEmail(context, valueEmail, valuePessoa);
+                        },
+                      ),
                     ),
                     SizedBox(height: 20),
                     Container(
@@ -305,8 +316,7 @@ class _PessoaDetalheState extends State<PessoaDetalhe> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(
-                                255, 10, 132, 255),
+                            backgroundColor: Color.fromARGB(255, 10, 132, 255),
                           ),
                           child: const Text(
                             'Salvar',
